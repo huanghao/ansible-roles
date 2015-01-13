@@ -1,13 +1,12 @@
-Vagrant
-=======
+Packer
+======
 
-Install vagrant
+Install packer
 
-Varaibles
-=========
+Role Variables
+--------------
 
-version: by default "1.7.2"
-arch: by default "x86_64"
+version: by default 0.7.5
 
 Example Playbook
 ----------------
@@ -16,6 +15,4 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - { role: vagrant, version: 1.7.2 }
-         - { role: vagrant }
-
+         - { role: packer, x: 0.7.5 }

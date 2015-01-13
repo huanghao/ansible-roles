@@ -1,0 +1,19 @@
+---
+- name: check if packer exists
+  command: test -e {{packer_home}}/packer
+  register: packer_cmd
+  ignore_errors: True
+  changed_when: False
+
+- name: download packer
+  get_url: dest={{local_file}} url={{download_url}}
+  when: packer_cmd.rc != 0
+  environment: proxy_env
+
+- name: install packer
+  command: mkdir {{packer_home}} && unzip -d {{packer_home}} {{local_file}}
+  sudo: yes
+  when: packer_cmd.rc != 0
+
+- debug: msg="Please add {{packer_home}} to your PATH in order to find packer command"
+  when: packer_cmd.rc != 0

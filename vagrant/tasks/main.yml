@@ -12,3 +12,4 @@
 
 - name: install vagrant
   command: dpkg -i {{deb_file}}
+  when: vagrant_cmd.rc != 0
