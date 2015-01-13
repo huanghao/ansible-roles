@@ -1,0 +1,6 @@
+---
+version: 1.7.2
+arch: x86_64
+deb: vagrant_{{version}}_{{arch}}.deb 
+deb_file: /tmp/{{deb}
+download_url: https://dl.bintray.com/mitchellh/vagrant/{{deb}}

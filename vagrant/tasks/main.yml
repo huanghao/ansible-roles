@@ -1,0 +1,14 @@
+---
+- name: check if vagrant exists
+  command: vagrant --version
+  register: vagrant_cmd
+  ignore_errors: True
+  changed_when: False
+
+- name: download vagrant
+  get_url: dest={{deb_file}} url={{download_url}}
+  when: vagrant_cmd.rc != 0
+  environment: proxy_env
+
+- name: install vagrant
+  command: dpkg -i {{deb_file}}
